@@ -1,0 +1,77 @@
+/* src/components/Card.css */
+.card {
+  position: relative;
+  width: 100px;
+  height: 140px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 -15px;
+  transition: transform 0.3s ease;
+}
+
+.card-content {
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.red {
+  color: #e94057;
+}
+
+.black {
+  color: #202020;
+}
+
+.card-corner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-left {
+  align-self: flex-start;
+}
+
+.bottom-right {
+  align-self: flex-end;
+  transform: rotate(180deg);
+}
+
+.card-value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-suit {
+  font-size: 18px;
+}
+
+.card-center-suit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+}
+
+.card-back {
+  background-color: #1e3b70;
+}
+
+.card-pattern {
+  height: 100%;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  border-radius: 8px;
+}
