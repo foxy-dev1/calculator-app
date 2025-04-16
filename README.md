@@ -5,10 +5,10 @@ A feature-rich calculator with both basic and scientific modes, complete with fu
 ## Screenshots
 
 ![Basic Mode](images/s1.png)
-*Basic Mode Interface*
+*Home Page*
 
 ![Scientific Mode](images/s2.png)
-*Scientific Mode Interface*
+*Calculator page*
 
 
 ## Features
