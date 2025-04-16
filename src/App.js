@@ -25,6 +25,7 @@ function useBackButtonHandler({ onShowHomepage }) {
 }
 
 function App() {
+
   const [display, setDisplay] = useState('0');
   const [prevValue, setPrevValue] = useState(null);
   const [operation, setOperation] = useState(null);
@@ -498,6 +499,14 @@ function App() {
 
   return (
     <div className={`App ${flipped ? 'flipped' : ''} ${mood} ${mode}`}>
+      <div className="punky-bg" aria-hidden="true">
+        {[...Array(18)].map((_, i) => (
+          <span key={i} className={`punky-symbol punky-symbol-${i}`}>
+            {['+', '-', '×', '÷', 'π', '√', 'Σ', '∆', '∞', '∫'][i % 10]}
+          </span>
+        ))}
+        <div className="punky-noise"></div>
+      </div>
       <div className="calculator-container">
         <div className="emoji-container">
           {!seriousMode && <div className="emoji">{emoji}</div>}

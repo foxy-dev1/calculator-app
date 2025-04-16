@@ -738,3 +738,74 @@ button:active {
   background: transparent;
   display: block;
 }
+
+/* Punky background and symbols */
+.punky-bg {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 60% 40%, #1a1a1a 0%, #232946 100%);
+  animation: punky-bg-fade 10s alternate infinite;
+}
+
+@keyframes punky-bg-fade {
+  0% { filter: brightness(1) contrast(1); }
+  50% { filter: brightness(1.1) contrast(1.2); }
+  100% { filter: brightness(1) contrast(1); }
+}
+
+.punky-symbol {
+  position: absolute;
+  font-size: 3.5rem;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-weight: bold;
+  opacity: 0.18;
+  color: #ff00cc;
+  text-shadow:
+    0 0 8px #ff00cc,
+    0 0 24px #00fff7,
+    2px 2px 0 #fff,
+    0 0 2px #fff;
+  user-select: none;
+  pointer-events: none;
+  mix-blend-mode: lighten;
+  animation: punky-float 12s linear infinite;
+}
+
+.punky-symbol-0 { top: 10%; left: 12%; color: #ff00cc; animation-delay: 0s;}
+.punky-symbol-1 { top: 30%; left: 80%; color: #00fff7; animation-delay: 2s;}
+.punky-symbol-2 { top: 60%; left: 20%; color: #fff700; animation-delay: 4s;}
+.punky-symbol-3 { top: 80%; left: 60%; color: #ff00cc; animation-delay: 6s;}
+.punky-symbol-4 { top: 50%; left: 50%; color: #00fff7; animation-delay: 8s;}
+.punky-symbol-5 { top: 20%; left: 70%; color: #fff700; animation-delay: 10s;}
+.punky-symbol-6 { top: 75%; left: 10%; color: #ff00cc; animation-delay: 3s;}
+.punky-symbol-7 { top: 15%; left: 55%; color: #00fff7; animation-delay: 5s;}
+.punky-symbol-8 { top: 65%; left: 80%; color: #fff700; animation-delay: 7s;}
+.punky-symbol-9 { top: 40%; left: 30%; color: #ff00cc; animation-delay: 9s;}
+.punky-symbol-10 { top: 85%; left: 35%; color: #00fff7; animation-delay: 1s;}
+.punky-symbol-11 { top: 25%; left: 25%; color: #fff700; animation-delay: 2.5s;}
+.punky-symbol-12 { top: 55%; left: 65%; color: #ff00cc; animation-delay: 4.5s;}
+.punky-symbol-13 { top: 70%; left: 45%; color: #00fff7; animation-delay: 6.5s;}
+.punky-symbol-14 { top: 35%; left: 75%; color: #fff700; animation-delay: 8.5s;}
+.punky-symbol-15 { top: 60%; left: 10%; color: #ff00cc; animation-delay: 10.5s;}
+.punky-symbol-16 { top: 10%; left: 85%; color: #00fff7; animation-delay: 5.5s;}
+.punky-symbol-17 { top: 90%; left: 20%; color: #fff700; animation-delay: 7.5s;}
+
+@keyframes punky-float {
+  0% { transform: translateY(0) scale(1) rotate(0deg);}
+  50% { transform: translateY(-30px) scale(1.1) rotate(8deg);}
+  100% { transform: translateY(0) scale(1) rotate(0deg);}
+}
+
+/* Add a grain/noise overlay */
+.punky-noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.18;
+  background-image: url('https://www.transparenttextures.com/patterns/noise.png');
+  mix-blend-mode: screen;
+}
