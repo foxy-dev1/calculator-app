@@ -152,6 +152,11 @@ button:active {
   opacity: 0;
   transition: visibility 0.3s, opacity 0.3s;
 }
+.function {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Show scientific panel when in scientific mode */
 .scientific .scientific-panel {

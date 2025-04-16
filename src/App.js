@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import HomePage from './HomePage';
+import CIcon from '@coreui/icons-react';
+import { cilBackspace } from '@coreui/icons';
 
 function App() {
   const [display, setDisplay] = useState('0');
@@ -77,7 +79,7 @@ function App() {
     return parseFloat(numValue.toFixed(6)).toString();
   };
 
-  // Reset the calculator
+  // Reset theg calculator
   const clearDisplay = () => {
     setDisplay('0');
     setPrevValue(null);
@@ -90,7 +92,7 @@ function App() {
     setNiceMemeShown(false); // Reset the flag when clearing the calculator
   };
 
-  // Update the emoji based on calculator state
+  // Update the emoji based on calculator  state
   const updateEmoji = (value) => {
     // Don't change emoji in serious mode
     if (seriousMode) {
@@ -121,6 +123,15 @@ function App() {
 
   // Input a number
   const inputDigit = (digit) => {
+    if (percentMode && percentValue !== null) {
+      // If in percent mode, build the expression as "9%99"
+      const newDisplay = display === '0' ? String(digit) : display + digit;
+      setDisplay(newDisplay);
+      setExpression(`${percentValue}%${newDisplay}`);
+      setWaitingForOperand(false);
+      return;
+    }
+
     // If previous operation was equals, reset the flag
     if (waitingForOperand) {
       setNiceMemeShown(false);
@@ -191,7 +202,7 @@ function App() {
     setPercentValue(parseFloat(display));
     setPercentMode(true);
     setDisplay('0');
-    setExpression('');
+    setExpression(`${display}%`); // Show "9%" after pressing %
   };
 
   // Add parenthesis
@@ -314,7 +325,7 @@ function App() {
       // Calculate percent of the entered value
       const result = (percentValue / 100) * parseFloat(display);
       setDisplay(formatResult(String(result)));
-      setExpression('');
+      setExpression(`${percentValue}% of ${display}`);
       setPercentMode(false);
       setPercentValue(null);
       setParenthesesCount(0);
@@ -437,6 +448,19 @@ function App() {
     }, 500);
   };
 
+  const backspace = () => {
+    if (display.length > 1) {
+      setDisplay(display.slice(0, -1));
+    } else {
+      setDisplay('0');
+    }
+    if (expression.length > 1) {
+      setExpression(expression.slice(0, -1));
+    } else {
+      setExpression('');
+    }
+  };
+
   const handleStart = () => {
     setShowHomepage(false);
   };
@@ -468,7 +492,9 @@ function App() {
               <div className="buttons">
                 <div className="row">
                   <button className="function" onClick={clearDisplay}>AC</button>
-                  <button className="function" onClick={toggleSign}>+/-</button>
+                  <button className="function" onClick={backspace}>
+                  <CIcon icon={cilBackspace} width={40} height={40} />
+                  </button>
                   <button className="function" onClick={percentage}>%</button>
                   <button className="operator" onClick={() => performOperation('/')}>/</button>
                 </div>
