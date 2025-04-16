@@ -134,7 +134,7 @@ const HomePage = ({ onStart }) => {
         </Center>
       ) : (
         <Fade in={true}>
-          <Container maxW="full" className="content-container">
+          <Box className="main-content">
             <Box className="hero-section">
               <Box className="emoji-float" fontSize="6xl" mb={6}>
                 🧮✨
@@ -142,14 +142,12 @@ const HomePage = ({ onStart }) => {
               <Heading as="h1" className="welcome-title">
                 Math<span className="gradient-text">Magician</span>
               </Heading>
-              
               <Text className="subtitle">
                 Welcome to the most unnecessarily dramatic calculator ever created.
                 We've spent thousands of hours making simple arithmetic look fancy.
               </Text>
             </Box>
-
-            <Center mt={8} mb={8}>
+            <Box className="button-bar">
               <Button 
                 onClick={onStart}
                 className="start-button"
@@ -157,8 +155,7 @@ const HomePage = ({ onStart }) => {
               >
                 Start Calculating
               </Button>
-            </Center>
-
+            </Box>
             <SimpleGrid columns={[1, 2, 4]} spacing={6} className="feature-list">
               {[
                 { icon: "➕", text: "Basic Calculations", description: "Add, subtract, multiply, divide - but with style!" },
@@ -184,11 +181,10 @@ const HomePage = ({ onStart }) => {
                 </VStack>
               ))}
             </SimpleGrid>
-
             <Text className="footer">
               Warning: May occasionally make you question your life choices.
             </Text>
-          </Container>
+          </Box>
         </Fade>
       )}
     </Box>

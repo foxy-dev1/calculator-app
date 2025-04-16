@@ -33,6 +33,30 @@
   }
 }
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 15px rgba(253, 160, 133, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(253, 160, 133, 0.4);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(253, 160, 133, 0.2);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Full-page background */
 .math-symbols {
   position: fixed !important;
@@ -75,30 +99,75 @@ body, .home-container, .content-container {
 }
 
 .start-button {
-  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-  color: #222;
-  font-weight: 700;
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 24px rgba(56,249,215,0.15);
+  background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite, pulse 3s ease-in-out infinite;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 1.8rem 1rem;
+  width: 400px;
+  border-radius: 100px;
   border: none;
-  border-radius: 30px;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 1;
+  visibility: visible;
   position: relative;
-  overflow: hidden;
-  padding: 1.5rem 3rem !important;
-  font-size: 1.5rem !important;
+  display: block;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .start-button:hover {
-  background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
-  color: #111;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 30px -10px rgba(253, 160, 133, 0.4),
+    0 0 20px rgba(253, 160, 133, 0.2);
+  letter-spacing: 2.5px;
 }
 
 .start-button:active {
-  transform: translateY(1px);
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 10px 20px -8px rgba(253, 160, 133, 0.5);
+}
+
+.start-button::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+  z-index: -1;
+  border-radius: 100px;
+  opacity: 0.5;
+  filter: blur(8px);
+  transition: all 0.4s ease;
+}
+
+.start-button:hover::after {
+  opacity: 0.8;
+  filter: blur(12px);
 }
 
 /* Float animation for math symbols */
@@ -137,7 +206,9 @@ body, .home-container, .content-container {
   min-height: 100vh;
   width: 100vw;
   padding-bottom: 2rem;
-  background: none; /* Let .math-symbols show through */
+  background: none;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .hero-section {
@@ -146,8 +217,13 @@ body, .home-container, .content-container {
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   padding: 4rem 2rem;
   text-align: center;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   color: #222;
+}
+
+.hero-section + .button-bar {
+  margin-top: -1rem; /* Adjust as needed to position it properly below hero */
 }
 
 .subtitle {
@@ -168,6 +244,27 @@ body, .home-container, .content-container {
   font-style: italic;
   color: #888;
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+/* Button bar styling */
+.button-bar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  margin: 1rem auto 3rem auto;
+  z-index: 10;
+  text-align: center;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Responsive adjustments */
