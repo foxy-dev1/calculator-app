@@ -3,6 +3,26 @@ import './App.css';
 import HomePage from './HomePage';
 import CIcon from '@coreui/icons-react';
 import { cilBackspace } from '@coreui/icons';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+// Custom hook with proper parameter passing
+function useBackButtonHandler({ onShowHomepage }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (location.pathname.includes('/calculator')) {
+        event.preventDefault();
+        navigate('/', { replace: true });
+        onShowHomepage(true); // Call the passed function instead
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [location.pathname, navigate, onShowHomepage]);
+}
 
 function App() {
   const [display, setDisplay] = useState('0');
@@ -29,6 +49,12 @@ function App() {
   const [progress, setProgress] = useState(0); // Progress bar value
   const [percentMode, setPercentMode] = useState(false);
   const [percentValue, setPercentValue] = useState(null);
+  const navigate = useNavigate(); // Hook must be inside component
+
+  // Use the hook with proper parameter
+  useBackButtonHandler({ 
+    onShowHomepage: setShowHomepage 
+  });
 
   useEffect(() => {
     // Set mood based on mode
@@ -463,6 +489,7 @@ function App() {
 
   const handleStart = () => {
     setShowHomepage(false);
+    navigate('/calculator');
   };
 
   if (showHomepage) {
