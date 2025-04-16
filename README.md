@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Interactive Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A feature-rich calculator with both basic and scientific modes, complete with fun easter eggs and hidden messages.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Basic Operations
+- Addition (+)
+- Subtraction (-)
+- Multiplication (×)
+- Division (÷)
+- Percentage (%)
+- Decimal point (.)
+- Clear (C)
+- Backspace (⌫)
+- Toggle positive/negative (±)
+- Parentheses ( ( ) )
 
-### `npm start`
+### Scientific Operations
+- Square root (√)
+- Square (x²)
+- Sine (sin)
+- Cosine (cos)
+- Tangent (tan)
+- Logarithm (log)
+- Natural logarithm (ln)
+- Pi (π)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Special Features
+- Mode toggle (Basic/Scientific)
+- Serious mode toggle (removes emojis)
+- Black hole effect
+- Dynamic emoji reactions
+- Loading screen with progress bar
+- Responsive design
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Easter Eggs and Hidden Messages
 
-### `npm test`
+### Number Combinations
+- `69 or result equal to 69` - Triggers a special meme and sound effect
+- `420` - Special emoji reaction
+- `5318008` - Classic calculator easter egg (BOOBIES upside-down)
+- `42` followed by `0` - Special emoji reaction
+- `5` - Special handling when entered first
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Special Results
+- Results > 10,000 - Triggers a financial advisor message
+- Perfect whole numbers - Special celebration emoji
+- Error states - Special error emoji
 
-### `npm run build`
+### Special Modes
+- Serious Mode - Removes all emojis and fun elements
+- Black Hole Mode - Creates a special animation effect
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Dependencies
+- React
+- CoreUI Icons
+- React Router
 
-### `npm run eject`
+## Project Structure
+```
+src/
+├── App.js         # Main calculator component
+├── App.css        # Main styles
+├── HomePage.js    # Home page component
+├── HomePage.css   # Home page styles
+├── Card.js        # Card component
+├── Card.css       # Card styles
+└── index.js       # Application entry point
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+Feel free to submit issues and enhancement requests!
