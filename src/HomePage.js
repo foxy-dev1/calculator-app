@@ -149,6 +149,16 @@ const HomePage = ({ onStart }) => {
               </Text>
             </Box>
 
+            <Center mt={8} mb={8}>
+              <Button 
+                onClick={onStart}
+                className="start-button"
+                _hover={{ transform: "translateY(-3px)", boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)" }}
+              >
+                Start Calculating
+              </Button>
+            </Center>
+
             <SimpleGrid columns={[1, 2, 4]} spacing={6} className="feature-list">
               {[
                 { icon: "➕", text: "Basic Calculations", description: "Add, subtract, multiply, divide - but with style!" },
@@ -174,16 +184,6 @@ const HomePage = ({ onStart }) => {
                 </VStack>
               ))}
             </SimpleGrid>
-
-            <Center mt={12}>
-              <Button 
-                onClick={onStart}
-                className="start-button"
-                _hover={{ transform: "translateY(-3px)", boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)" }}
-              >
-                Start Calculating
-              </Button>
-            </Center>
 
             <Text className="footer">
               Warning: May occasionally make you question your life choices.
