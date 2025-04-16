@@ -1,16 +1,17 @@
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -19,20 +20,715 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 40px;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.game-controls {
+  margin: 20px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  width: 70px; /* Reduced from 75px */
+  height: 70px; /* Reduced from 75px */
+  border: none;
+  border-radius: 50%;
+  font-size: 24px; /* Slightly smaller font */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background-color: #333;
+  color: #fff;
+  justify-self: center;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.chill button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nerdy button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.draw-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.draw-button:hover {
+  background-color: #45a049;
+}
+
+.draw-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.reset-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.reset-button:hover {
+  background-color: #d32f2f;
+}
+
+.deck-info {
+  margin: 10px 0;
+}
+
+.empty-deck-message {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.deck-pile {
+  margin: 20px 0;
+  position: relative;
+  height: 140px;
+}
+
+.drawn-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  position: relative;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.drawing {
+  opacity: 0.7;
+}
+
+/* Update the calculator container to accommodate sliding panels */
+.calculator {
+  background-color: #222;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  width: 400px; /* Increased from 340px */
+  padding: 20px;
+  padding-bottom: 75px; /* Add extra padding at bottom for toggle buttons */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  margin-top: 100px;
+}
+
+/* Make calculator wider in scientific mode */
+.scientific .calculator {
+  width: 700px; /* Increased from 660px */
+}
+
+/* Main content wrapper */
+.calculator-content {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+}
+
+/* Basic calculator panel */
+.basic-panel {
+  width: 380px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Scientific panel styling */
+.scientific-panel {
+  width: 320px;
+  position: relative;
+  padding: 15px;
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+/* Show scientific panel when in scientific mode */
+.scientific .scientific-panel {
+  visibility: visible;
+  opacity: 1;
+}
+
+.scientific-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.scientific-buttons button {
+  width: 65px;
+  height: 65px;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+}
+
+.scientific-buttons .black-hole-button {
+  display: none; /* Hide duplicated Black Hole button */
+}
+
+.black-hole-button {
+  grid-column: span 3;
+  width: 100%;
+  height: 50px !important;
+  background: linear-gradient(145deg, #000, #333);
+  color: white;
+  font-size: 16px !important;
+  box-shadow: 0 0 10px 2px rgba(75, 0, 130, 0.5);
+  transition: all 0.3s ease;
+  border-radius: 20px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 720px) {
+  .calculator {
+    width: 320px;
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .scientific .calculator {
+    width: 320px;
   }
+  
+  .scientific-panel {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    padding: 20px;
+    background-color: #222;
+    border-top: 1px solid #444;
+  }
+  
+  .scientific-buttons {
+    margin-top: 0;
+    padding: 15px;
+  }
+  
+  .scientific .basic-panel {
+    display: none;
+  }
+  
+  .scientific .scientific-panel {
+    top: 0;
+  }
+  
+  button {
+    width: 65px;
+    height: 65px;
+    font-size: 20px;
+  }
+  
+  .zero {
+    width: 132px;
+  }
+  
+  .row {
+    gap: 10px;
+  }
+  
+  .buttons {
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .scientific-buttons button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mode-toggles {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+  }
+}
+
+/* Moods */
+.chill .calculator {
+  background: linear-gradient(145deg, #3a3a3a, #222);
+}
+
+.nerdy .calculator {
+  background: linear-gradient(145deg, #213363, #0c1221);
+}
+
+.calculator-mood {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+
+.glasses {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 20px;
+  z-index: 101;
+}
+
+.emoji {
+  font-size: 48px;
+  color: #FFD700; /* Golden yellow color */
+  text-shadow: 
+    0 0 5px rgba(0, 0, 0, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: bounce 2s infinite;
+  display: inline-block;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Add slow fade transitions */
+.display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 80px;
+  padding: 0 20px 10px 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #444;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative; /* was absolute */
+  z-index: 3;
+}
+
+.display-container.easter-egg-420 {
+  animation: weed 2s infinite;
+}
+
+.display-container.black-hole-active {
+  position: relative !important;
+  overflow: hidden !important;
+  animation-name: black-hole-pulse !important;
+  animation-duration: 2.5s !important;
+  animation-iteration-count: infinite !important;
+  animation-timing-function: ease-in-out !important;
+  animation-fill-mode: both !important;
+}
+
+.display-container.black-hole-fading {
+  animation: black-hole-fade-out 3.5s ease-out forwards !important; /* Extended from 2s to 3.5s */
+}
+
+.display-container.black-hole-active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px 10px rgba(75, 0, 130, 0.8);
+  z-index: 10;
+  opacity: 1;
+  animation: black-hole-grow 1s forwards;
+  pointer-events: none;
+}
+
+/* Fade out for the black hole center */
+.display-container.black-hole-fading::after {
+  animation: black-hole-disappear 4s ease-out forwards !important; /* Extended from 2s to 4s */
+}
+
+.black-hole-character {
+  display: inline-block;
+  animation: suck-in 0.5s forwards;
+}
+
+@keyframes black-hole-grow {
+  0% { 
+    width: 0; 
+    height: 0; 
+    opacity: 0;
+  }
+  100% { 
+    width: 40px; 
+    height: 40px; 
+    opacity: 1;
+  }
+}
+
+@keyframes black-hole-pulse {
+  0% {
+    box-shadow: inset 0 0 35px rgba(75, 0, 130, 0.7);
+  }
+  50% {
+    box-shadow: inset 0 0 50px rgba(75, 0, 130, 0.8);
+  }
+  100% {
+    box-shadow: inset 0 0 35px rgba(75, 0, 130, 0.7);
+  }
+}
+
+/* Make disappear animation slower and more gradual */
+@keyframes black-hole-disappear {
+  0% {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+}
+
+/* Also slow down the glow fade out */
+@keyframes black-hole-fade-out {
+  0% {
+    box-shadow: inset 0 0 30px rgba(75, 0, 130, 0.8);
+  }
+  30% {
+    box-shadow: inset 0 0 25px rgba(75, 0, 130, 0.6);
+  }
+  60% {
+    box-shadow: inset 0 0 15px rgba(75, 0, 130, 0.4);
+  }
+  90% {
+    box-shadow: inset 0 0 5px rgba(75, 0, 130, 0.2);
+  }
+  100% {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes weed {
+  0% {
+    box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.7);
+    background-color: #444;
+  }
+  50% {
+    box-shadow: inset 0 0 25px rgba(0, 255, 0, 0.9);
+    background-color: #2c4e2c;
+  }
+  100% {
+    box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.7);
+    background-color: #444;
+  }
+}
+
+@keyframes suck-in {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx, 0), var(--ty, 0)) scale(0);
+    opacity: 0;
+  }
+}
+
+.operation-display {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 28px; /* Larger font */
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.nerdy .operation-display {
+  color: #4285f4;
+  font-family: 'Courier New', monospace;
+}
+
+.display {
+  font-size: 48px;
+  color: #fff;
+  width: 100%;
+  text-align: right;
+  line-height: 1.2;
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  display: block;
+  transition: all 0.3s ease;
+  min-height: 55px;
+}
+
+.flipped .display-container {
+  transform: rotate(180deg);
+}
+
+.flipped-text {
+  transform: rotate(180deg);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  margin-top: 0px;
+  margin-bottom: 15px; /* Add margin at bottom */
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; /* Reduced from 12px */
+  justify-content: center;
+  align-items: center;
+}
+
+.zero {
+  grid-column: span 2;
+  width: 160px; /* Adjusted for new button size */
+  border-radius: 32.5px;
+  text-align: left;
+  padding-left: 28px;
+}
+
+.operator {
+  background-color: #ff9800;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.operator:hover {
+  background-color: #ffa726;
+  transform: scale(1.05);
+}
+
+.operator:active {
+  transform: scale(0.95);
+}
+
+.chill .operator {
+  background-color: #ff9800;
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+
+.chill .operator:hover {
+  background-color: #ffa726;
+  box-shadow: 0 6px 12px rgba(255, 152, 0, 0.4);
+}
+
+.nerdy .operator {
+  background-color: #4285f4;
+  box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+}
+
+.nerdy .operator:hover {
+  background-color: #5c9cff;
+  box-shadow: 0 6px 12px rgba(66, 133, 244, 0.4);
+}
+
+.function {
+  background-color: #a5a5a5;
+  color: #000;
+  transition: all 0.2s ease;
+}
+
+.function:hover {
+  background-color: #b5b5b5;
+  transform: scale(1.05);
+}
+
+.function:active {
+  transform: scale(0.95);
+}
+
+.mode-toggles {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 3;
+}
+
+.mode-toggle, .serious-toggle, .black-hole-toggle {
+  flex: 1;
+  height: 36px; /* Slightly smaller height */
+  border-radius: 18px;
+  font-size: 13px; /* Slightly smaller font */
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+@keyframes nice {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.emoji.nice {
+  animation: nice 0.5s 3;
+}
+
+.black-hole-button {
+  width: 100%;
+  background: linear-gradient(145deg, #000, #333);
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 0 10px 2px rgba(75, 0, 130, 0.5);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.black-hole-button:hover {
+  box-shadow: 0 0 15px 5px rgba(75, 0, 130, 0.7);
+}
+
+.black-hole-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 20px 7px rgba(75, 0, 130, 0.9);
+}
+
+.black-hole-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.black-hole-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 15px;
+  z-index: 1000;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  box-shadow: 0 0 15px 5px rgba(75, 0, 130, 0.6);
+  max-width: 280px;
+  border-right: 4px solid #9d4edd;
+  opacity: 1;
+  animation: pulsate 15s infinite; /* Extended to 15s */
+  transition: opacity 3s ease, transform 3s ease; /* Slower transitions */
+}
+
+.black-hole-popup.fading {
+  opacity: 0 !important;
+  transform: none !important; /* Removed translateY to keep position */
+  animation: none !important;
+  transition: opacity 5s ease; /* Removed transform transition since we're not moving */
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px 5px rgba(75, 0, 130, 0.6);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 7px rgba(75, 0, 130, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px 5px rgba(75, 0, 130, 0.6);
+  }
+}
+
+@media (max-width: 400px) {
+  .calculator {
+    width: 98%;
+    max-width: 360px;
+    padding: 15px 10px;
+  }
+  
+  button {
+    width: 65px;
+    height: 65px;
+    font-size: 20px;
+  }
+  
+  .zero {
+    width: 140px;
+  }
+}
+
+/* Add at the end of the file */
+.nice-meme-container {
+  position: fixed;
+  right: 700px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 9999;
+  background: transparent;
+}
+
+.nice-meme-container.visible {
+  opacity: 1;
+}
+
+.nice-meme {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: none;
+  background: transparent;
+  display: block;
 }
