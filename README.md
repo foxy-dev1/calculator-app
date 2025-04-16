@@ -2,6 +2,15 @@
 
 A feature-rich calculator with both basic and scientific modes, complete with fun easter eggs and hidden messages.
 
+## Screenshots
+
+![Basic Mode](images/s1.png)
+*Basic Mode Interface*
+
+![Scientific Mode](images/s2.png)
+*Scientific Mode Interface*
+
+
 ## Features
 
 ### Basic Operations
