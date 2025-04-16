@@ -50,6 +50,8 @@ function App() {
   const [progress, setProgress] = useState(0); // Progress bar value
   const [percentMode, setPercentMode] = useState(false);
   const [percentValue, setPercentValue] = useState(null);
+  const [showFunnyPopup, setShowFunnyPopup] = useState(false);
+  const [funnyPopupText, setFunnyPopupText] = useState('');
   const navigate = useNavigate(); // Hook must be inside component
 
   // Use the hook with proper parameter
@@ -180,6 +182,9 @@ function App() {
       setDisplay('5318008');
       setExpression('5318008');
       setFlipped(true);
+      setFunnyPopupText("🎉 You found the classic calculator easter egg! 🙃 so do you like them? 😏");
+      setShowFunnyPopup(true);
+      setTimeout(() => setShowFunnyPopup(false), 3500);
       return;
     }
 
@@ -370,6 +375,12 @@ function App() {
     // Evaluate the expression
     const result = evaluateExpression(finalExpression);
     setDisplay(result);
+
+    if (!isNaN(result) && parseFloat(result) > 10000) {
+      setFunnyPopupText("💸 Wow, you must be rich! Need a financial advisor?");
+      setShowFunnyPopup(true);
+      setTimeout(() => setShowFunnyPopup(false), 3500);
+    }
     
     if (result !== 'Error') {
       setExpression(result);
@@ -625,6 +636,13 @@ function App() {
             <div className="black-hole-popup">
               <p className="popup-text">Your numbers have been consumed by the cosmic singularity! Mathematical laws no longer apply.</p>
               <div className="popup-emojis">🕳️ 💫 🌌 ⚛️ 🔮 💥</div>
+            </div>
+          )}
+
+          {/* Funny popup message */}
+          {showFunnyPopup && (
+            <div className="funny-popup">
+              {funnyPopupText}
             </div>
           )}
         </div>

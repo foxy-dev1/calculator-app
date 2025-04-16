@@ -323,7 +323,7 @@ button:active {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 100px;
+  height: 110px;
   padding: 0 20px 10px 20px;
   box-sizing: border-box;
   overflow: hidden;
@@ -725,7 +725,29 @@ button:active {
   z-index: 9999;
   background: transparent;
 }
-
+.funny-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: linear-gradient(135deg, #f1f1f1, #fff4f4);
+  color: #222;
+  padding: 15px 22px;
+  border-radius: 15px;
+  z-index: 1001;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 18px 4px rgba(255, 0, 204, 0.3);
+  max-width: 320px;
+  border-right: 4px solid #ff00cc;
+  opacity: 0.97;
+  animation: pop-fade 3.5s;
+}
+@keyframes pop-fade {
+  0% { opacity: 0; transform: translateY(30px);}
+  10% { opacity: 1; transform: translateY(0);}
+  90% { opacity: 1;}
+  100% { opacity: 0; transform: translateY(-20px);}
+}
 .nice-meme-container.visible {
   opacity: 1;
 }
